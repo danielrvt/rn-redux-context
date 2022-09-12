@@ -1,20 +1,28 @@
 import { StatusBar } from "expo-status-bar";
+import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
-import CountContextProvider, { useCounter } from "./store/count-context";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import CountContextProvider, { useCounter } from "./store/context";
+
+import { store } from "./store/redux/store";
+import { decrement, increment } from "./store/redux/counter";
 
 function App() {
-  const countContext = useCounter();
+  // const countContext = useCounter();
+  // const { counter, increment, decrement } = countContext;
+  // const handleIncrement = () => increment && increment();
+  // const handleDecrement = () => decrement && decrement();
 
-  const { counter, increment, decrement } = countContext;
-
-  const handleIncrement = () => increment && increment();
-
-  const handleDecrement = () => decrement && decrement();
+  const count = useSelector((store: any) => store.counter);
+  const dispatch = useDispatch();
+  const handleIncrement = () => dispatch(increment());
+  const handleDecrement = () => dispatch(decrement());
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Text style={styles.count}>{`${counter}`}</Text>
+      {/* <Text style={styles.count}>{`${counter}`}</Text> */}
+      <Text style={styles.count}>{`${count}`}</Text>
       <View style={styles.buttonContainer}>
         <View style={styles.button}>
           <Button title="+" color="#fff" onPress={handleIncrement} />
@@ -54,6 +62,8 @@ const styles = StyleSheet.create({
 
 export default () => (
   <CountContextProvider>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </CountContextProvider>
 );

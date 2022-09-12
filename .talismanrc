@@ -2,5 +2,5 @@ fileignoreconfig:
   - filename: .expo-shared/assets.json
     checksum: eca4a52463b08318f77c92c47260d64275353b45aa0f69da19ef2bafa6a407f3
   - filename: yarn.lock
-    checksum: 3ac785847a9102c195c5414953b980e01e07687de5e253af6aa3d6191ec6b19d
+    checksum: c3fb6bbeaf7114b98943266b2edd66d1cf5ebd9a75f7efe01a93aeb5a27be8bc
 version: ""
