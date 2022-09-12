@@ -1,5 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-import { useContext } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import CountContextProvider, { useCounter } from "./store/count-context";
 
@@ -18,10 +17,10 @@ function App() {
       <Text style={styles.count}>{`${counter}`}</Text>
       <View style={styles.buttonContainer}>
         <View style={styles.button}>
-          <Button title="+" onPress={handleIncrement} />
+          <Button title="+" color="#fff" onPress={handleIncrement} />
         </View>
         <View style={styles.button}>
-          <Button title="-" onPress={handleDecrement} />
+          <Button title="-" color="#FFF" onPress={handleDecrement} />
         </View>
       </View>
     </View>
@@ -38,13 +37,18 @@ const styles = StyleSheet.create({
 
   count: { fontSize: 36 },
   buttonContainer: {
+    width: "100%",
     flexDirection: "row",
+    flexWrap: "nowrap",
+    padding: 32,
+    justifyContent: "space-around",
   },
   button: {
-    backgroundColor: "#ABC",
+    borderRadius: 10,
+    backgroundColor: "#5E33FF",
     fontSize: 54,
     borderColor: "#000",
-    padding: 32,
+    padding: 12,
   },
 });
 
